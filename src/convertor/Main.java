@@ -1,4 +1,4 @@
-package com.company;
+package convertor;
 
 import javax.swing.*;
 
@@ -29,7 +29,7 @@ public class Main {
                     Convertor.addBinary();
                     break;
                 default:
-                    return;
+                    progress();
             }
         }
         catch( Exception e ) {
