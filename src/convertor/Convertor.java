@@ -3,6 +3,53 @@ package convertor;
 import javax.swing.*;
 
 public class Convertor {
+    // Calling the Conversion methods based on user's choice
+    public static void task() {
+        // Creating an array of choices for the user to choose from
+        String[] choices = { "Display Binary Format of a number", "Binary <=> Decimal Conversion", "Decimal <=> Hexadecimal Conversion", "Binary <=> Hexadecimal Conversion", "Addition of Binary numbers" };
+
+        // Getting choice from the User
+        int choice = JOptionPane.showOptionDialog( null, "What would you like to do?", "Conversion Calculator", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0] );
+
+        // Calling of Conversion methods based on users choice
+        try{
+            switch (choice) {
+                case 0:
+                    Convertor.binaryDisplay();
+                    break;
+                case 1:
+                    Convertor.binaryDecimal();
+                    break;
+                case 2:
+                    Convertor.decimalHex();
+                    break;
+                case 3:
+                    Convertor.binaryHex();
+                    break;
+                case 4:
+                    Convertor.addBinary();
+                    break;
+                default:
+                    progress();
+            }
+        }
+        catch( Exception e ) {
+            JOptionPane.showMessageDialog( null, "Invalid Input Type!!!", "Conversion Calculator", JOptionPane.WARNING_MESSAGE);
+            progress();
+        }
+    }
+
+    // Asking if user would like to continue
+    public static void progress() {
+        int next = JOptionPane.showConfirmDialog( null, "Would you like to do any other thing?", "Conversion Calculator", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE );
+
+        if (next == JOptionPane.YES_OPTION) {
+            task();
+        } else {
+            JOptionPane.showMessageDialog(null, "Alrighty.\n\nStay Safe!!!", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
     /* Displaying the Binary format of a number */
     public static void binaryDisplay() {
         // Getting value from the User
@@ -12,7 +59,7 @@ public class Convertor {
         JOptionPane.showMessageDialog( null, "The Value of your number in Binary Format is: \"" + Integer.toBinaryString((int) value) + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
 
         // Asking if the user would like to perform another task
-        Main.progress();
+        progress();
     }
 
     /* Conversion between Binary & Decimal numbers */
@@ -30,7 +77,7 @@ public class Convertor {
                 decimalToBinary();
                 break;
             default:
-                Main.task();
+                task();
         }
     }
 
@@ -49,7 +96,7 @@ public class Convertor {
         JOptionPane.showMessageDialog( null, "The Decimal Equivalent of your Binary number is: \"" + decimal + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
 
         // Asking if the user would like to perform another task
-        Main.progress();
+        progress();
     }
 
     // Decimal to Binary method
@@ -73,7 +120,7 @@ public class Convertor {
         JOptionPane.showMessageDialog( null, "The Binary Equivalent of your Decimal number is: \"" + binary + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
 
         // Asking if the user would like to perform another task
-        Main.progress();
+        progress();
     }
 
     /* Conversion between Decimal & Hexadecimal numbers */
@@ -91,7 +138,7 @@ public class Convertor {
                 hexadecimalToDecimal();
                 break;
             default:
-                Main.task();
+                task();
         }
     }
 
@@ -119,7 +166,7 @@ public class Convertor {
         JOptionPane.showMessageDialog( null, "The Hexadecimal Equivalent of your Decimal number is: \"" + hex + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
 
         // Asking if the user would like to perform another task
-        Main.progress();
+        progress();
     }
 
     // Hexadecimal to Decimal method
@@ -147,7 +194,7 @@ public class Convertor {
         JOptionPane.showMessageDialog( null, "The Decimal Equivalent of your Hexadecimal number is: \"" + decimal + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
 
         // Asking if the user would like to perform another task
-        Main.progress();
+        progress();
     }
 
     /* Conversion between Binary & Hexadecimal numbers */
@@ -165,7 +212,7 @@ public class Convertor {
                 hexadecimalToBinary();
                 break;
             default:
-                Main.task();
+                task();
         }
     }
 
@@ -187,7 +234,7 @@ public class Convertor {
         JOptionPane.showMessageDialog( null, "The Hexadecimal Equivalent of your Binary number is: \"" + hex + "\"", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
 
         // Asking if the user would like to perform another task
-        Main.progress();
+        progress();
     }
 
     // Hexadecimal to Binary method
@@ -208,7 +255,7 @@ public class Convertor {
         JOptionPane.showMessageDialog( null, "The Hexadecimal Equivalent of your Binary number is: \"" + binary + "\"", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
 
         // Asking if the user would like to perform another task
-        Main.progress();
+        progress();
     }
 
     /* Addition of two Binary numbers */
@@ -228,6 +275,6 @@ public class Convertor {
         JOptionPane.showMessageDialog( null, "The Sum of your Binary digits is: \"" + Integer.toBinaryString(result) + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
 
         // Asking if the user would like to perform another task
-        Main.progress();
+        progress();
     }
 }
