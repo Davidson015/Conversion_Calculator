@@ -15,39 +15,40 @@ public class Convertor {
         try{
             switch (choice) {
                 case 0:
-                    Convertor.binaryDisplay();
+                    binaryDisplay();
                     break;
                 case 1:
-                    Convertor.binaryDecimal();
+                    binaryDecimal();
                     break;
                 case 2:
-                    Convertor.decimalHex();
+                    decimalHex();
                     break;
                 case 3:
-                    Convertor.binaryHex();
+                    binaryHex();
                     break;
                 case 4:
-                    Convertor.addBinary();
+                    addBinary();
                     break;
-                default:
-                    progress();
             }
         }
         catch( Exception e ) {
             JOptionPane.showMessageDialog( null, "Invalid Input Type!!!", "Conversion Calculator", JOptionPane.WARNING_MESSAGE);
-            progress();
         }
     }
 
     // Asking if user would like to continue
     public static void progress() {
-        int next = JOptionPane.showConfirmDialog( null, "Would you like to do any other thing?", "Conversion Calculator", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE );
-
-        if (next == JOptionPane.YES_OPTION) {
+        while (true) {
             task();
-        } else {
-            JOptionPane.showMessageDialog(null, "Alrighty.\n\nStay Safe!!!", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE);
+
+            int next = JOptionPane.showConfirmDialog( null, "Would you like to do any other thing?", "Conversion Calculator", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE );
+
+            if ( (next == JOptionPane.NO_OPTION) || (next == JOptionPane.CLOSED_OPTION) ) {
+                break;
+            }
         }
+
+        JOptionPane.showMessageDialog(null, "Alrighty.\n\nStay Safe!!!", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /* Displaying the Binary format of a number */
@@ -57,9 +58,6 @@ public class Convertor {
 
         // Converting & Printing out value in Binary Format
         JOptionPane.showMessageDialog( null, "The Value of your number in Binary Format is: \"" + Integer.toBinaryString((int) value) + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
-
-        // Asking if the user would like to perform another task
-        progress();
     }
 
     /* Conversion between Binary & Decimal numbers */
@@ -76,8 +74,6 @@ public class Convertor {
             case "Decimal to Binary Conversion":
                 decimalToBinary();
                 break;
-            default:
-                task();
         }
     }
 
@@ -94,9 +90,6 @@ public class Convertor {
 
         // Returning the Decimal value to the user
         JOptionPane.showMessageDialog( null, "The Decimal Equivalent of your Binary number is: \"" + decimal + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
-
-        // Asking if the user would like to perform another task
-        progress();
     }
 
     // Decimal to Binary method
@@ -118,9 +111,6 @@ public class Convertor {
 
         // Returning the Binary value to the user
         JOptionPane.showMessageDialog( null, "The Binary Equivalent of your Decimal number is: \"" + binary + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
-
-        // Asking if the user would like to perform another task
-        progress();
     }
 
     /* Conversion between Decimal & Hexadecimal numbers */
@@ -137,8 +127,6 @@ public class Convertor {
             case "Hexadecimal to Decimal Conversion":
                 hexadecimalToDecimal();
                 break;
-            default:
-                task();
         }
     }
 
@@ -164,9 +152,6 @@ public class Convertor {
 
         // Returning the Hexadecimal value to the user
         JOptionPane.showMessageDialog( null, "The Hexadecimal Equivalent of your Decimal number is: \"" + hex + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
-
-        // Asking if the user would like to perform another task
-        progress();
     }
 
     // Hexadecimal to Decimal method
@@ -192,9 +177,6 @@ public class Convertor {
 
         // Returning the Decimal value to the user
         JOptionPane.showMessageDialog( null, "The Decimal Equivalent of your Hexadecimal number is: \"" + decimal + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
-
-        // Asking if the user would like to perform another task
-        progress();
     }
 
     /* Conversion between Binary & Hexadecimal numbers */
@@ -211,8 +193,6 @@ public class Convertor {
             case "Hexadecimal to Binary Conversion":
                 hexadecimalToBinary();
                 break;
-            default:
-                task();
         }
     }
 
@@ -232,9 +212,6 @@ public class Convertor {
 
         // Returning the Hexadecimal value to user
         JOptionPane.showMessageDialog( null, "The Hexadecimal Equivalent of your Binary number is: \"" + hex + "\"", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
-
-        // Asking if the user would like to perform another task
-        progress();
     }
 
     // Hexadecimal to Binary method
@@ -253,9 +230,6 @@ public class Convertor {
 
         // Returning the Binary value to user
         JOptionPane.showMessageDialog( null, "The Hexadecimal Equivalent of your Binary number is: \"" + binary + "\"", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
-
-        // Asking if the user would like to perform another task
-        progress();
     }
 
     /* Addition of two Binary numbers */
@@ -273,8 +247,5 @@ public class Convertor {
 
         // Converting & Returning the Sum of the Binary digits to the user
         JOptionPane.showMessageDialog( null, "The Sum of your Binary digits is: \"" + Integer.toBinaryString(result) + "\".", "Conversion Calculator", JOptionPane.INFORMATION_MESSAGE );
-
-        // Asking if the user would like to perform another task
-        progress();
     }
 }
